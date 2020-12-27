@@ -1,0 +1,34 @@
+# this code can only decrypt one word at a time
+
+
+#input
+
+encrypt = input("Encrypted word (ONLY ONE WORD):  ")
+x = len(encrypt)
+y = "abcdefghijklmnopqrstuvwxyz"
+l1 = []
+s2 = ""
+l2 = []
+l3 = []
+#converting the encrypted name to list
+for a in encrypt:
+    l3.append(a)
+#print(l3)    
+for i in y:
+    l1.append(i)
+    #making a loop to have all the decrypted possibilities in one list
+for c in range(1,26):   
+    for j in l3:
+        for t in range(len(l1)):
+            if j == l1[t]:
+                if t+c < 26:
+                    l2.append(l1[t+c])
+                else:
+                    l2.append(l1[26-t-c])
+#print(l2)
+for i in range(len(l2)):
+    s2 += l2[i]
+decrypt = [(s2[i:i+len(encrypt)]) for i in range(0, len(s2), len(encrypt))]
+#print(len(decrypt))
+for i in range(len(decrypt)):
+    print(str(i+1)+":",decrypt[i])
